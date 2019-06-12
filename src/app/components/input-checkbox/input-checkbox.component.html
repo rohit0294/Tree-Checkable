@@ -1,0 +1,18 @@
+<div *ngIf="item">
+    <div>
+        <input type="checkbox" [(ngModel)]="item.checked" (click)="onItemChecked(item)"/>
+        {{ item.title }}
+        <span>
+            <button (click)="toggleExpand()" *ngIf="item.children && item.children.length">+</button>
+        </span>
+    </div>
+
+    <div *ngIf="item.children && isVisible" class="child-checkboxes">
+        <ng-container *ngFor="let child of item.children">
+            <input type="checkbox" [(ngModel)]="child.checked" (click)="onItemChecked(child)">
+            {{ child.title }}
+            <br>
+        </ng-container>
+    </div>
+</div>
+<br>
